@@ -1,52 +1,36 @@
-# 🎓 Portafolio Académico – UIDE
+# 🔐 Generador de Contraseñas Seguras
 
-Este repositorio contiene tareas, prácticas y proyectos desarrollados por **Rubén Mosquera** como parte de su formación universitaria en la **Universidad Internacional del Ecuador (UIDE)**.
-
----
-
-## 👨‍🎓 Información del Estudiante
-
-- **Nombre completo:** Rubén Mosquera  
-- **Universidad:** Universidad Internacional del Ecuador (UIDE)  
-- **Carrera:** *(Agrega aquí tu carrera si deseas)*  
-- **Semestre:** *(Opcional)*
+Este proyecto consiste en una aplicación simple para generar contraseñas seguras, desarrollada como parte de la materia **Lógica de Programación** de la **UIDE**.
 
 ---
 
-## 📂 Contenido del Repositorio
+## 📄 Archivos Incluidos
 
-| Módulo / Materia | Entrega / Proyecto | Descripción |
-|------------------|--------------------|-------------|
-| Lógica de Programación | [Generador de Contraseñas](./generador_contrasenas.md) | Pseudocódigo + Diagrama de flujo |
-| *(Otra materia)* | *(Otro proyecto)* | *(Descripción)* |
-
----
-
-## 🛠️ Tecnologías y Herramientas Usadas
-
-- Markdown (`.md`)
-- Mermaid para diagramas de flujo
-- Git y GitHub para control de versiones
-- *(Agrega aquí lenguajes si más adelante usas Python, C++, etc.)*
+| Archivo                   | Descripción                              |
+|---------------------------|------------------------------------------|
+| `generador_contrasenas.py` | Script en Python que genera contraseñas  |
+| `Pseudocodigo.md`        | Lógica del programa en pseudocódigo      |
+| `README.md`              | Este archivo (documentación del módulo)  |
 
 ---
 
-## 🧠 Objetivo del Repositorio
+## 🧪 ¿Cómo funciona?
 
-Documentar de forma clara y profesional cada una de las entregas académicas, facilitando:
-- Organización y seguimiento del aprendizaje.
-- Portafolio para evaluación docente.
-- Base reutilizable para proyectos futuros.
+El usuario puede elegir entre dos modos de generación:
+1. **Por nivel de seguridad**: Bajo, Medio o Alto
+2. **Modo personalizado**: Cantidad específica de minúsculas, mayúsculas, números y símbolos
 
----
-
-## 📌 Cómo visualizar diagramas
-
-Los diagramas de flujo se encuentran exportados como imágenes `.png` y también como código `.mmd` si se desea editar con [Mermaid Live Editor](https://mermaid.live/edit).
+Se construye la contraseña con caracteres aleatorios según la configuración seleccionada y se mezcla para garantizar aleatoriedad.
 
 ---
 
-## 📥 Cómo clonar el repositorio
+## 📷 Diagrama de flujo
+
+> Puedes encontrar el diagrama de flujo en formato `.png` o el código Mermaid para editarlo si es necesario.
+
+---
+
+## ▶️ Ejecución
 
 ```bash
-git clone https://github.com/tu-usuario/nombre-repositorio.git
+python generador_contrasenas.py
