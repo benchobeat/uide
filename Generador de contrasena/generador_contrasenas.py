@@ -64,32 +64,6 @@ def configurar_personalizado():
         print("Error: Por favor ingrese números válidos.")
         return 0, 0, 0, 0
 
-def generar_contrasena(minusculas, mayusculas, numeros, especiales):
-    """
-    Genera una contraseña aleatoria según los parámetros proporcionados.
-    
-    Args:
-        minusculas (int): Cantidad de letras minúsculas
-        mayusculas (int): Cantidad de letras mayúsculas
-        numeros (int): Cantidad de dígitos numéricos
-        especiales (int): Cantidad de caracteres especiales
-        
-    Returns:
-        str: Una contraseña generada aleatoriamente con la configuración especificada
-    """
-    contrasena = []
-    
-    # Añadir caracteres según la configuración
-    contrasena.extend(random.choice(MINUSCULAS) for _ in range(minusculas))
-    contrasena.extend(random.choice(MAYUSCULAS) for _ in range(mayusculas))
-    contrasena.extend(random.choice(NUMEROS) for _ in range(numeros))
-    contrasena.extend(random.choice(ESPECIALES) for _ in range(especiales))
-    
-    # Mezclar los caracteres
-    random.shuffle(contrasena)
-    
-    # Convertir la lista en string
-    return ''.join(contrasena)
 
 def main():
     """
@@ -113,8 +87,9 @@ def main():
         
         # Verificar que se hayan ingresado valores válidos
         if minu + mayu + num + esp > 0:
-            contrasena = generar_contrasena(minu, mayu, num, esp)
-            print(f"\nSu contraseña generada es: {contrasena}")
+            # Aqui debemos llamar a nuestra futura función
+            print("Generando contraseña. Minúsculas: "+str(minu)+" Mayúsculas: "+str(mayu)+" Números: "+str(num)+" Caracteres especiales: "+str(esp))
+            
         else:
             print("No se pudo generar la contraseña. Verifique los valores ingresados.")
 

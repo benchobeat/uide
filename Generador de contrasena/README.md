@@ -8,7 +8,7 @@ Este proyecto consiste en una aplicación simple para generar contraseñas segur
 
 | Archivo                   | Descripción                              |
 |---------------------------|------------------------------------------|
-| `generador_contrasenas.py` | Script en Python que genera contraseñas  |
+| `generador_contrasenas.py` | Script en Python que genera contraseñas (en desarrollo) |
 | `generador_contrasenas.png` | Diagrama de flujo para aplicacion  |
 | `Pseudocodigo.md`        | Lógica del programa en pseudocódigo      |
 | `README.md`              | Este archivo (documentación del módulo)  |

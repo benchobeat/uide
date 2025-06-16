@@ -14,7 +14,7 @@ if a % 2 == 0:
 else:
     print("El numero es impar")
 """
-"""
+
 a = float(input(" Ingrese un primer numero: "))
 b = float(input(" Ingrese un segundo numero: "))
 c = float(input(" Ingrese un tercer numero: "))
@@ -22,32 +22,9 @@ c = float(input(" Ingrese un tercer numero: "))
 if a > b and a > c:
     print("El numero mayor es: " + str(a))
 elif b > a and b > c:
-        print("El numero mayor es: " + str(b))
+    print("El numero mayor es: " + str(b))
 else:
-        print("El numero mayor es: " + str(c))
-"""
-
-import random
-# Generar un número aleatorio entre 1 y 100
-numero_ganador = random.randint(1, 100)
-intentos = 0
-while True:
-    try:
-        # Pedir al usuario que ingrese un número
-        intento = int(input("\nIngresa tu intento: "))
-        intentos += 1
-            
-        # Verificar el intento
-        if intento < numero_ganador:
-            print("El número es mayor. ¡Sigue intentando!")
-        elif intento > numero_ganador:
-            print("El número es menor. ¡Sigue intentando!")
-        else:
-            print(f"\n¡Felicidades! ¡Adivinaste el número en {intentos} intentos!")
-            break
-    except ValueError:
-        print("Por favor, ingresa un número válido.")
-
+    print("El numero mayor es: " + str(c))
 
 """edad = int(input("Ingresa tu edad: "))
 
