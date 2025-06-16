@@ -21,8 +21,6 @@ El usuario puede elegir entre dos modos de generación:
 1. **Por nivel de seguridad**: Bajo, Medio o Alto
 2. **Modo personalizado**: Cantidad específica de minúsculas, mayúsculas, números y símbolos
 
-Se construye la contraseña con caracteres aleatorios según la configuración seleccionada y se mezcla para garantizar aleatoriedad.
-
 ---
 
 ## 📷 Diagrama de flujo
