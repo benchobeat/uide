@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Moderna | Generador de Contraseñas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- 
+    Chosen Palette: UIDE Brand Colors (Clean & Modern)
+    Application Structure Plan: A clean, two-panel layout. The structure is maintained, but interactive icons are added and the UI screenshot is enlarged. The title slide now includes the career name.
+    Visualization & Content Choices: 
+    - Report Info: Career Name -> Goal: Contextualize -> Viz: Added text for "Ingeniería en Ciberseguridad" to the title slide. -> Interaction: Static text. -> Justification: Fulfills user request. -> Library/Method: HTML.
+    - Report Info: UI Image Size -> Goal: Enhance Visibility -> Viz: Significantly increased the max-height of the UI screenshot image to fill more of the available space. -> Interaction: N/A. -> Justification: Fulfills user request for better readability. -> Library/Method: Tailwind CSS.
+    - Report Info: Interactive Images -> Goal: Engage, Modernize -> Viz: Added subtle, theme-related Unicode icons (shield, target, etc.) to several slides. -> Interaction: Icons have a hover effect (scale, rotate) to feel interactive. -> Justification: Fulfills user request for more interactivity in a clean, modern way without using actual images. -> Library/Method: HTML, CSS.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+        :root {
+            --uide-blue: #0033A0;
+            --dark-gray: #2d3748;
+            --accent-gold: #D4AF37;
+            --light-bg: #ffffff;
+            --terminal-bg: #1e293b;
+        }
+
+        #presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .brand-panel {
+            width: 320px;
+            flex-shrink: 0;
+            background-color: var(--dark-gray);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .slide-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 3rem 5rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+            background-color: var(--light-bg);
+        }
+        
+        .slide.active {
+            transform: translateX(0);
+            z-index: 10;
+        }
+        .slide.exiting-left {
+            transform: translateX(-100%);
+        }
+        .slide.exiting-right {
+            transform: translateX(100%);
+        }
+
+        .animated-content {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+        }
+
+        .slide.active .animated-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide.active .animated-content-delay-1 { transition-delay: 0.55s; }
+        .slide.active .animated-content-delay-2 { transition-delay: 0.7s; }
+        .slide.active .animated-content-delay-3 { transition-delay: 0.85s; }
+
+        .terminal {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--terminal-bg);
+            color: #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .terminal-line-container {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            white-space: pre-wrap;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .interactive-icon {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.1;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .slide:hover .interactive-icon {
+            transform: scale(1.1) rotate(-5deg);
+            opacity: 0.15;
+        }
+
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <main id="presentation-container">
+        
+        <div class="brand-panel">
+            <img src="https://www.uide.edu.ec/wp-content/uploads/2023/06/cropped-UIDE480.png" alt="[Imagen del logo de la UIDE]" class="h-24 w-24 object-contain">
+            <div id="slide-progress" class="text-white/50 text-sm">
+                <!-- Progress will be injected here -->
+            </div>
+        </div>
+
+        <div class="slide-container">
+            <!-- Portada -->
+            <section id="portada" class="slide">
+                <div class="interactive-icon" style="top: 2rem; right: 3rem;">🛡️</div>
+                <div class="text-left">
+                    <div class="animated-content">
+                        <p class="font-semibold text-2xl" style="color:var(--uide-blue);">Proyecto de Software</p>
+                        <h1 class="text-7xl font-extrabold my-4" style="color:var(--dark-gray);">Generador de<br>Contraseñas Seguras</h1>
+                    </div>
+                    <div class="mt-4 text-slate-500 animated-content animated-content-delay-1">
+                        <p class="text-xl">Presentado por: Rubén Mosquera</p>
+                        <p class="mt-4 text-base font-bold">Ingeniería en Ciberseguridad</p>
+                        <p class="text-base">UIDE Universidad Internacional del Ecuador</p>
+                        <p class="text-base font-semibold">LOGICA DE PROGRAMACION 1-ECC-1F</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Objetivos -->
+            <section id="objetivos" class="slide">
+                <div class="w-full h-full flex flex-col justify-center">
+                    <div class="w-full text-left animated-content mb-12">
+                        <h2 class="text-4xl font-bold text-slate-800">Objetivos del <span style="color:var(--uide-blue);">Proyecto</span></h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-10 w-full">
+                        <div class="text-left animated-content animated-content-delay-1 relative">
+                            <div class="interactive-icon" style="top: -2rem; left: -1rem;">🎯</div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-4 border-l-4 pl-4" style="border-color: var(--accent-gold);">Objetivo General</h3>
+                            <p class="text-lg text-slate-600 pl-5">Desarrollar una aplicación de escritorio funcional para generar contraseñas robustas, mitigando riesgos por credenciales débiles.</p>
+                        </div>
+                        <div class="text-left animated-content animated-content-delay-2 relative">
+                             <div class="interactive-icon" style="top: -2rem; left: -1rem;">📋</div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-4 border-l-4 pl-4" style="border-color: var(--accent-gold);">Objetivos Específicos</h3>
+                            <ul class="space-y-3 text-lg text-slate-600 list-none pl-5">
+                                <li><span class="font-bold" style="color:var(--uide-blue);">&raquo;</span> Permitir personalización de longitud y caracteres.</li>
+                                <li><span class="font-bold" style="color:var(--uide-blue);">&raquo;</span> Asegurar alta aleatoriedad criptográfica.</li>
+                                <li><span class="font-bold" style="color:var(--uide-blue);">&raquo;</span> Proveer una interfaz de usuario clara e intuitiva.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interfaz de Usuario -->
+            <section id="interfaz" class="slide">
+                 <div class="w-full h-full flex flex-col justify-center">
+                     <div class="w-full text-left animated-content mb-10">
+                        <h2 class="text-4xl font-bold text-slate-800">Interfaz de <span style="color:var(--uide-blue);">Usuario</span></h2>
+                        <p class="mt-2 text-xl text-slate-500">Ejecución del script en una consola estándar.</p>
+                    </div>
+                    <div class="w-full flex justify-center items-center animated-content animated-content-delay-1">
+                        <img src="https://raw.githubusercontent.com/benchobeat/uide/main/Generador%20de%20contrasena/generador_contrasenas.png" alt="[Imagen de la interfaz del generador de contraseñas de escritorio]" class="rounded-lg shadow-2xl w-auto" style="max-height: 80vh;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Arquitectura -->
+            <section id="arquitectura" class="slide">
+                 <div class="w-full h-full flex flex-col justify-center">
+                    <div class="w-full text-left animated-content mb-12">
+                        <h2 class="text-4xl font-bold text-slate-800">Arquitectura y <span style="color:var(--uide-blue);">Tecnología</span></h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-10 w-full">
+                        <div class="bg-slate-50 p-6 rounded-lg shadow-md animated-content animated-content-delay-1">
+                            <h3 class="text-2xl font-bold text-slate-800 text-center mb-4">Flujo de Ejecución</h3>
+                            <div class="flex flex-col gap-2 text-center text-slate-700 font-medium">
+                                <div class="p-3 bg-white rounded border">Script de Python</div>
+                                <div class="font-bold" style="color:var(--uide-blue);">↓</div>
+                                <div class="p-3 bg-white rounded border">Función `generar_contrasena`</div>
+                                <div class="font-bold" style="color:var(--uide-blue);">↓</div>
+                                <div class="p-3 bg-white rounded border">Salida en Consola</div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-lg shadow-md animated-content animated-content-delay-2 relative">
+                            <div class="interactive-icon" style="top: -1rem; right: 0rem;">⚙️</div>
+                            <h3 class="text-2xl font-bold text-slate-800 text-center mb-4">Tecnologías Clave</h3>
+                            <ul class="space-y-4 text-lg text-slate-600 list-none text-left p-4">
+                               <li class="flex items-center"><span class="text-2xl mr-4" style="color: var(--accent-gold);">&bull;</span><div><span class="font-bold">Python 3:</span> Lenguaje principal.</div></li>
+                               <li class="flex items-center"><span class="text-2xl mr-4" style="color: var(--accent-gold);">&bull;</span><div><span class="font-bold">`secrets`:</span> Aleatoriedad segura.</div></li>
+                               <li class="flex items-center"><span class="text-2xl mr-4" style="color: var(--accent-gold);">&bull;</span><div><span class="font-bold">`string`:</span> Conjuntos de caracteres.</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ejecución en Terminal -->
+            <section id="terminal" class="slide">
+                <div class="w-full h-full flex flex-col justify-center">
+                    <div class="w-full text-left animated-content mb-10">
+                       <h2 class="text-4xl font-bold text-slate-800">Ejecución en <span style="color:var(--uide-blue);">Terminal</span></h2>
+                       <p class="mt-2 text-xl text-slate-500">Una demostración del script en acción.</p>
+                   </div>
+                   <div id="terminal-content" class="w-full terminal animated-content animated-content-delay-1">
+                        <pre></pre>
+                   </div>
+               </div>
+           </section>
+
+            <!-- Conclusión -->
+            <section id="conclusion" class="slide">
+                <div class="w-full relative">
+                     <div class="interactive-icon" style="bottom: 0rem; right: 0rem;">✔️</div>
+                    <div class="animated-content">
+                        <h2 class="text-4xl font-extrabold text-slate-800">Conclusión y Agradecimiento</h2>
+                        <p class="mt-6 text-xl text-slate-600 max-w-4xl leading-relaxed">Se desarrolló exitosamente una herramienta robusta que resuelve una necesidad crítica de seguridad, demostrando la aplicación efectiva de principios de software seguro en una solución práctica.</p>
+                        <p class="text-3xl font-bold mt-12" style="color:var(--uide-blue);">¡Gracias!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Buttons -->
+            <div class="fixed bottom-0 right-0 z-20">
+                <div class="px-10 py-6 flex space-x-3">
+                     <button id="prev-slide" class="bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold h-12 w-12 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-md">&lt;</button>
+                     <button id="next-slide" class="bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold h-12 w-12 rounded-full transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-md">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const slideProgressContainer = document.getElementById('slide-progress');
+            let currentSlide = 0;
+            let isAnimating = false;
+
+            const slideTitles = [
+                "Portada", "Objetivos", "Interfaz", "Arquitectura", "Terminal", "Conclusión"
+            ];
+
+            function showSlide(index, direction) {
+                if (isAnimating || index < 0 || index >= slides.length || index === currentSlide) return;
+                isAnimating = true;
+
+                const newSlide = slides[index];
+                const oldSlide = slides[currentSlide];
+                
+                direction = direction || (index > currentSlide ? 'right' : 'left');
+
+                if (direction === 'right') {
+                    newSlide.style.transform = 'translateX(100%)';
+                } else {
+                    newSlide.style.transform = 'translateX(-100%)';
+                }
+                newSlide.offsetHeight;
+
+                requestAnimationFrame(() => {
+                    oldSlide.classList.add(direction === 'right' ? 'exiting-left' : 'exiting-right');
+                    newSlide.classList.add('active');
+                });
+                
+                currentSlide = index;
+
+                if (newSlide.id === 'terminal') {
+                    animateTerminal();
+                }
+
+                setTimeout(() => {
+                    oldSlide.classList.remove('active', 'exiting-left', 'exiting-right');
+                    newSlide.style.transform = '';
+                    isAnimating = false;
+                }, 700);
+
+                updateUI();
+            }
+            
+            function updateUI() {
+                prevButton.disabled = currentSlide === 0;
+                nextButton.disabled = currentSlide === slides.length - 1;
+                
+                let progressHTML = '';
+                slideTitles.forEach((title, index) => {
+                    const isActive = index === currentSlide;
+                    progressHTML += `<p class="${isActive ? 'text-white font-bold' : 'text-white/50'} my-1">${String(index + 1).padStart(2, '0')} ${title}</p>`;
+                });
+                slideProgressContainer.innerHTML = progressHTML;
+            }
+
+            prevButton.addEventListener('click', () => showSlide(currentSlide - 1, 'left'));
+            nextButton.addEventListener('click', () => showSlide(currentSlide + 1, 'right'));
+            
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                }
+            });
+
+            slides[0].classList.add('active');
+            slides[0].style.transform = '';
+            updateUI();
+
+
+            function animateTerminal() {
+                const terminalPre = document.querySelector('#terminal-content pre');
+                terminalPre.innerHTML = '';
+                 const lines = [
+                    [{text: '$ python generador_contrasenas.py', type: 'command'}],
+                    [{text: ''}],
+                    [{text: '=== Generador de Contraseñas ===', type: 'output'}],
+                    [{text: '1. Generar por Nivel de Seguridad', type: 'output'}],
+                    [{text: '2. Personalizar configuración', type: 'output'}],
+                    [{text: '3. Salir', type: 'output'}],
+                    [{text: 'Seleccione una opción: ', type: 'prompt'}, {text: '2', type: 'input'}],
+                    [{text: ''}],
+                    [{text: 'Cantidad de minúsculas (0-64): ', type: 'prompt'}, {text: '8', type: 'input'}],
+                    [{text: 'Cantidad de mayúsculas (0-64): ', type: 'prompt'}, {text: '4', type: 'input'}],
+                    [{text: 'Cantidad de números (0-64): ', type: 'prompt'}, {text: '4', type: 'input'}],
+                    [{text: 'Cantidad de caracteres especiales (0-64): ', type: 'prompt'}, {text: '2', type: 'input'}],
+                    [{text: ''}],
+                    [{text: 'Configuración de la contraseña:', type: 'output'}],
+                    [{text: '- Minúsculas: 8', type: 'output'}],
+                    [{text: '- Mayúsculas: 4', type: 'output'}],
+                    [{text: '- Números: 4', type: 'output'}],
+                    [{text: '- Caracteres especiales: 2', type: 'output'}],
+                    [{text: '- Longitud total: 18 caracteres', type: 'output'}],
+                    [{text: ''}],
+                    [{text: 'Contraseña generada: ', type: 'prompt'}, {text: 'kR#t8U2pY@w9mS1zF3', type: 'password'}],
+                    [{text: 'Longitud: 18 caracteres', type: 'output'}],
+                    [{text: ''}],
+                    [{text: '¿Desea generar otra contraseña? (s/n): ', type: 'prompt'}, {text: 'n', type: 'input'}],
+                    [{text: ''}],
+                    [{text: '¡Gracias por usar el generador de contraseñas!', type: 'output'}],
+                    [{text: '$ ', type: 'command'}],
+                ];
+
+                let lineIndex = 0;
+                function printNextLine() {
+                    if (lineIndex >= lines.length) return;
+                    
+                    const lineParts = lines[lineIndex];
+                    const lineDiv = document.createElement('div');
+                    lineDiv.classList.add('terminal-line-container');
+                    lineDiv.style.animationDelay = `${lineIndex * 0.1}s`;
+                    
+                    lineParts.forEach(part => {
+                        const partSpan = document.createElement('span');
+                        if(part.type === 'command') partSpan.className = 'text-slate-400';
+                        if(part.type === 'prompt') partSpan.className = 'text-cyan-400';
+                        if(part.type === 'input') partSpan.className = 'text-yellow-300';
+                        if(part.type === 'password') partSpan.className = 'text-green-400 font-bold';
+                        partSpan.textContent = part.text;
+                        lineDiv.appendChild(partSpan);
+                    });
+                    
+                    terminalPre.appendChild(lineDiv);
+                    
+                    lineIndex++;
+                    setTimeout(printNextLine, 120);
+                }
+                printNextLine();
+            }
+        });
+    </script>
+</body>
+</html>

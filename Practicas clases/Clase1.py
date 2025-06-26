@@ -26,7 +26,7 @@ elif b > a and b > c:
 else:
         print("El numero mayor es: " + str(c))
 """
-
+"""
 import random
 # Generar un número aleatorio entre 1 y 100
 numero_ganador = random.randint(1, 100)
@@ -47,8 +47,20 @@ while True:
             break
     except ValueError:
         print("Por favor, ingresa un número válido.")
+"""
+x = 0 
 
+while x <= 100: 
 
+    print(x) 
+
+    x += 1 
+
+    if x == 50: 
+
+        break 
+
+print("Bucle completado") 
 """edad = int(input("Ingresa tu edad: "))
 
 if edad >= 65:
