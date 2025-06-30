@@ -1,5 +1,13 @@
 # 🔐 Generador de Contraseñas Seguras
 
+**Estudiante:** Rubén Mosquera  
+**Fecha:** 29 de Junio de 2025  
+
+## 📌 Objetivo del Programa
+Desarrollar un generador de contraseñas seguras que permita a los usuarios crear contraseñas personalizadas según diferentes niveles de seguridad o especificaciones personalizadas.
+
+---
+
 Este proyecto consiste en una aplicación simple para generar contraseñas seguras, desarrollada como parte de la materia **Lógica de Programación** de la **UIDE**.
 
 ---
